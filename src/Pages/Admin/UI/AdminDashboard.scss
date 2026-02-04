@@ -1,0 +1,249 @@
+.admin-dashboard {
+  padding: 30px 40px;
+  background-color: #feffff;
+  height: 100%;
+  overflow-y: auto;
+  @media (max-width: 786px) {
+    padding: 30px 30px;
+  }
+
+  .dashboard-content {
+    .dashboard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+      .head {
+        h3 {
+          font-size: 24px;
+          font-family: roboto;
+        }
+        p {
+          margin-top: 4px;
+          color: #8f9bb3;
+        }
+      }
+
+      .dash-right {
+        display: flex;
+        gap: 20px;
+
+        .head-btn {
+          padding: 5px 10px;
+          font-size: 14px;
+          border-radius: 5px;
+          outline: none;
+          border: 1px solid #8f9bb3;
+          background-color: #fff;
+          i {
+            margin-right: 4px;
+          }
+        }
+      }
+
+      @media (max-width: 890px) {
+        flex-direction: column;
+        gap: 20px;
+        align-items: flex-start;
+      }
+    }
+
+    .dashboard-info {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+
+      @media (max-width: 1150px) {
+        grid-template-columns: repeat(3, 1fr);
+      }
+      @media (max-width: 650px) {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      @media (max-width: 500px) {
+        grid-template-columns: repeat(1, 1fr) !important;
+      }
+
+      .product-info {
+        background-color: #fff;
+        display: flex;
+        justify-content: space-between;
+        padding: 10px;
+        border: 1px solid rgb(205, 205, 205);
+        border-radius: 10px;
+        box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.02);
+        .detail {
+          display: flex;
+          flex-direction: column;
+          gap: 5px;
+        }
+        i {
+          align-self: center;
+        }
+      }
+    }
+
+    .charts {
+      margin-top: 30px;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 30px;
+
+      @media (max-width: 1000px) {
+        grid-template-columns: repeat(1, 1fr);
+      }
+      .card-charts {
+        height: fit-content;
+        padding: 15px 20px 10px;
+        background-color: #fff;
+        border: 1px solid rgb(211, 233, 255);
+        border-radius: 5px;
+        box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.09);
+
+        .chart-head {
+          display: flex;
+          justify-content: space-between;
+          margin-bottom: 20px;
+        }
+        .no-data {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          color: rgb(109, 20, 20);
+          width: 100%;
+          height: 338px;
+          font-size: 30px;
+        }
+      }
+    }
+
+    .recent-orders {
+      background-color: #fff;
+      margin-top: 40px;
+      padding: 20px;
+      box-shadow:
+        0 2px 6px rgba(0, 0, 0, 0.06),
+        0 8px 20px rgba(0, 0, 0, 0.08);
+      border-radius: 5px;
+      .order-card {
+        .recent-head {
+          display: flex;
+          justify-content: space-between;
+          margin-bottom: 20px;
+          align-items: center;
+
+          .nav-link{
+            color: inherit;
+            text-decoration: none;
+          }
+          .head{
+            font-weight: 700;
+          }
+          .view{
+            font-weight: normal;
+            font-size: 16px;
+            font-weight: 700;
+            color: rgb(92, 92, 152);
+            &:hover{
+              text-decoration: underline;
+            }
+          }
+        }
+
+        .order {
+          margin-top: 15px;
+          border-radius: 10px;
+          background-color: #fbfdff;
+          padding: 15px 20px;
+          display: flex;
+          justify-content: space-between;
+          border: 1.5px solid rgb(192, 197, 246);
+          box-shadow: 3px 3px 2px rgba(0,0,0,0.06);
+          @media(max-width:400px){
+                display: flex;
+    flex-direction: column;
+    align-items: self-start;
+    gap: 20px;
+          }
+
+          .price-status{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1px;
+            .status{
+              background-color: rgb(251, 188, 29);
+              padding: 3px 15px;
+              border-radius: 10px;
+              font-size: 14px;
+            }
+          }
+
+          @media(max-width:786px){
+            padding: 10px;
+
+            .icon-orderId{
+              gap: 10px;
+              .order-id{
+                h3{
+                  // font-size: 16px;
+                }
+              }
+            }
+          }
+        }
+
+        .icon-orderId {
+          display: flex;
+          justify-content: space-between;
+          gap: 30px;
+
+          .icon-wrapper {
+            background-color: #dbf3f9;
+            padding: 8px;
+            border-radius: 5px;
+            align-self: center;
+            i {
+              font-weight: 700;
+            }
+          }
+
+          .order-id {
+            h3{
+              font-weight: 600;
+              font-size: 18px;
+              white-space: nowrap;
+              @media(max-width:550px){
+                font-size: 15px !important;
+              }
+            }
+            .user-item {
+              display: flex;
+              gap: 20px;
+              span{
+                font-size: 16px;
+                font-weight: normal;
+                color: rgb(78, 81, 81);
+              }
+              .name{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                gap: 7px;
+                .dot{
+                  height: 5px;
+                  width: 5px;
+                  background-color: rgb(105, 95, 181);
+                  border-radius: 50%;
+                }
+                h4{
+                  font-size: 15px;
+                  color: rgb(124, 123, 123);
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

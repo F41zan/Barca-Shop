@@ -1,0 +1,112 @@
+table {
+  border-collapse: collapse;
+  width: 100%;
+  border-collapse: collapse;
+  // min-height: 330px;
+
+  thead {
+    tr {
+      th {
+        background-color: #F7F9FB;
+        text-align: start;
+        padding: 15px 20px;
+        border-bottom: 1px solid rgb(226, 218, 218);
+        border-top: 1px solid rgb(226, 218, 218);
+        font-family: outfit;
+        font-weight: 600;
+        font-size: 17px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+
+        // ✅ ADD SPECIFIC WIDTHS FOR EACH COLUMN
+        &:nth-child(1) { width: 80px;padding-left: 20px; }   // ID column
+        // &:nth-child(2) { width: 150px; }  // Name column
+        // &:nth-child(3) { width: 200px; }  // Email column
+        // &:nth-child(4) { width: 120px; }  // Department column
+        // &:nth-child(5) { width: 120px; }  // Status column
+        // &:nth-child(6) { width: 100px; }  // Actions column
+      }
+    }
+  }
+  tbody {
+    tr {
+      .btns {
+        button {
+          background-color: transparent;
+          border: none;
+          font-size: 17px;
+          cursor: pointer;
+        }
+        .edit-btn {
+          .edit-icon {
+            color: cadetblue !important;
+            // font-size: px;
+          }
+        }
+        .dlt-btn {
+          // font-size: 20px;
+          margin-left: 20px;
+          color: #c93a3c;
+        }
+      }
+      td {
+        padding: 15px 20px;
+        border-bottom: 1px solid rgb(226, 218, 218);
+        border-top: 1px solid rgb(226, 218, 218);
+        vertical-align: middle;
+        white-space: nowrap;
+        overflow: hidden;
+        // height: 20px !important;
+
+        &:nth-child(1){padding-left: 20px;}
+
+        select {
+          width: 100%;
+          min-width: 120px;
+          padding: 6px 10px;
+          font-size: 14px;
+          border-radius: 6px;
+          border: 1px solid #d1d5db;
+          background-color: #fff;
+          cursor: pointer;
+          outline: none;
+          transition: all 0.2s ease;
+
+          &:hover {
+            border-color: #2563eb;
+          }
+
+          &:focus {
+            border-color: #2563eb;
+            box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.2);
+          }
+
+          &:disabled {
+            background-color: #f3f4f6;
+            cursor: not-allowed;
+          }
+          option {
+            font-size: 14px;
+            padding: 8px; // may work in Firefox only
+            color: #111827;
+            background-color: #fbf5f5;
+            border-radius: 5px;
+          }
+        }
+
+        .product-cell{
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          .product-img{
+            height:50px;
+            width: 50px;
+            // border: 1px solid rgb(142, 141, 141);
+            border-radius: 4px;
+          }
+        }
+      }
+    }
+  }
+}

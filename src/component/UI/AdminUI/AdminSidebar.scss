@@ -1,0 +1,316 @@
+.admin-sidebar {
+  background-color: #fff;
+  height: 100vh;
+  min-width: 240px;
+  padding: 11px 10px;
+  box-shadow: 0px 3px 4px rgba(0, 0, 0, 0.4);
+  position: sticky;
+  z-index: 1003;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition:
+    width 0.3s ease,
+    min-width 0.3s ease;
+
+  @media (max-width: 786px) {
+    position: fixed;
+    transform: translateX(-269px); //3px extra bcoz it also hides shadow
+    transition: 0.5s;
+  }
+
+  &.side-active {
+    transform: translateX(0px) !important;
+    transition: all 0.5s;
+  }
+
+  .img-desc,
+  .page-name,
+  .admin-name,
+  .collapse-btn h3 {
+    display: inline-block; // Required for max-width to work
+    max-width: 170px; //this is main to animate
+    opacity: 1;
+    overflow: hidden;
+    white-space: nowrap;
+    transition:
+      max-width 0.3s ease,//animating based on increasing width so width increase our animation also increases
+      opacity 0.2s ease;
+  }
+
+  &.sidebar-collapse {
+    min-width: 80px !important;
+    .logo-container {
+      justify-content: center;
+      margin-left: 11px;
+    }
+
+    .img-desc,
+    .page-name,
+    .admin-name,
+    .collapse-btn h3 {
+      max-width: 0;
+      opacity: 0;
+    }
+
+    .dot {
+      display: none;
+    }
+
+    .collapse-btn {
+      i {
+        margin: 0 !important;
+        rotate: 180deg;
+        transition: 0.1s;
+      }
+    }
+    .admin-info {
+      padding: 10px !important;
+      padding-right: 0px !important;
+      .img-wrapper {
+        height: 20px;
+        width: 20px;
+      }
+    }
+    .page-navigations {
+      margin-top: 25px !important;
+      .page {
+        justify-content: center;
+        .page-header {
+          gap: 0;
+        }
+      }
+    }
+    .sidebar-footer {
+      padding: 0;
+      hr {
+        margin: 10px -10px !important;
+      }
+    }
+  }
+
+  .logo {
+    .logo-container {
+      // padding: 0px 10px;
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      cursor: pointer;
+      img {
+        background-color: transparent;
+        width: 40px;
+        height: 40px;
+      }
+
+      .img-desc {
+        h3 {
+          font-family: outfit;
+          font-weight: 700;
+          color: rgb(43, 41, 41);
+          font-size: 24px;
+        }
+        p {
+          font-weight: 600;
+          color: #8f9bb3;
+          font-size: 15px;
+        }
+      }
+      i {
+        font-size: 27px;
+        align-self: flex-start;
+        padding-top: 7px;
+        color: darkgray;
+      }
+    }
+
+    hr {
+      margin: 10px -10px;
+      border: none;
+      height: 1.4px;
+      background-color: #e8eaec;
+    }
+  }
+
+  .page-navigations {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    position: relative;
+    transition: all 0.5s;
+    .nav-link {
+      text-decoration: none;
+      color: inherit;
+      // border: none !important ;
+    }
+    .active {
+      background-color: #ecf4fe !important;
+      color: #5369d7;
+      border: 2px solid rgb(193, 208, 228);
+      box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.08);
+      border-radius: 5px;
+      border: none;
+      .icon-wrapper {
+        background-color: #d2e7fe !important;
+      }
+    }
+    // .active {
+    //   background-color: #ecf4fe !important;
+    //   color: #5369d7;
+    //   border: 2px solid rgb(193, 208, 228);
+    //   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.08);
+    //   .icon-wrapper {
+    //     background-color: #d2e7fe !important;
+    //   }
+    // }
+
+    .page {
+      border-radius: 8px;
+      padding: 8px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border: 1px solid rgb(200, 198, 255);
+      .page-header {
+        display: flex;
+        gap: 13px;
+        align-items: center;
+        .icon-wrapper {
+          background-color: #fcfdfe;
+          padding: 7px;
+          border-radius: 2px;
+          border: 0.1px solid rgb(200, 198, 255);
+          i {
+            font-weight: 700;
+          }
+        }
+        .page-name {
+          font-size: 18px;
+          font-family: system-ui;
+          font-weight: 500;
+        }
+      }
+      .active-dot {
+        background-color: #263d8b;
+      }
+      .dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+      }
+
+      &:hover {
+        background-color: #ebf2ff;
+        transition: all 0.2s ease;
+        .icon-wrapper {
+          background-color: #d2e7fe;
+          color: #59769a;
+          transition: all 0.2s ease;
+        }
+      }
+    }
+  }
+
+  .sidebar-footer {
+    padding: 30px 10px 0px;
+
+    hr {
+      margin: 5px -20px !important;
+      border: none;
+      height: 1.4px;
+      background-color: #e8eaec;
+    }
+    .admin-info {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-top: 20px !important;
+      background-color: #ebf2ff;
+      padding: 10px 20px;
+      border-radius: 10px;
+      border: 1px solid rgb(200, 198, 255);
+
+      .img-wrapper {
+        background: linear-gradient(130deg, #5f74f1, #9b4cff);
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: #fff;
+        h3 {
+          font-family: outfit;
+          font-weight: 600;
+        }
+      }
+
+      .admin-name {
+        p {
+          color: #8f9bb3;
+          font-size: 14px;
+        }
+      }
+    }
+
+    .collapse-btn {
+      width: 100%;
+      margin-top: 15px;
+      background-color: transparent;
+      border: 1.3px solid rgb(200, 198, 255);
+      font-size: 17px;
+      padding: 7px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+
+      @media (max-width: 786px) {
+        display: none;
+      }
+
+      h3 {
+        font-size: 17px;
+        font-weight: 600;
+      }
+
+      i {
+        margin-right: 5px;
+        margin-left: -20px;
+        font-size: 18px;
+        transition: 0.1s;
+      }
+    }
+    .logout-btn {
+      width: 100%;
+      margin-top: 15px;
+      background-color: transparent;
+      border: 1.3px solid rgb(200, 198, 255);
+      font-size: 17px;
+      padding: 7px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+
+      @media (min-width: 786px) {
+        display: none;
+      }
+
+      h3 {
+        font-size: 17px;
+        font-weight: 600;
+      }
+
+      .icon {
+        margin-right: 5px;
+        margin-left: -20px;
+        font-size: 18px;
+        transition: 0.1s;
+      }
+    }
+  }
+}
