@@ -8,7 +8,7 @@ import CardContextProvider from './component/Context/CardContext.jsx'
 createRoot(document.getElementById('root')).render(
   // <StrictMode>
    <CardContextProvider>
-    <BrowserRouter>
+    <BrowserRouter basename="/Barca-Shop">
     <App />
     </BrowserRouter>
      </CardContextProvider > 
