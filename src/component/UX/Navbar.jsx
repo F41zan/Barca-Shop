@@ -37,7 +37,7 @@ const Navbar = () => {
   
     useEffect(()=>{
       const handleClickOutside = (e) =>{
-        if(!optionRef.current.contains(e.target)){
+        if(optionRef.current && !optionRef.current.contains(e.target)){
           setShowOpt(false);
         }
       }
