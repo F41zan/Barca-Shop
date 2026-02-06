@@ -23,9 +23,13 @@ const AdminOrder = () => {
   const [selectedOrder, setSelectedOrder] = useState();
   const { orders, setOrders } = useContext(CardContext);
 
-  const itemsInOrder = orders.map((order) => {
-    return order.items.reduce((sum, item) => sum + Number(item.selectedQty), 0);
-  });
+  const totalItems = orders.reduce(
+  (total, order) =>
+    total +
+    order.items.reduce((sum, item) => sum + Number(item.selectedQty), 0),
+  0
+);
+;
   const pendingOrder = orders.filter(
     (order) => order.orderStatus.toLowerCase() === "pending",
   );
@@ -180,7 +184,7 @@ const AdminOrder = () => {
           <InfoCard
             title="Total orders"
             icon={<FontAwesomeIcon icon={faBoxOpen} />}
-            desc={`${itemsInOrder} items`}
+            desc={`${totalItems} items`}
             dataNo={orders.length}
             bgc="#D7E7FF"
             color="#265baa"
