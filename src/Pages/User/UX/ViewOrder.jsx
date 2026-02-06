@@ -160,7 +160,7 @@ const ViewOrder = () => {
                     </div>
                   </div>
                   {order?.items?.map((item) => (
-                    <div className="ordered-items">
+                    <div className="ordered-items" key={item.id}>
                       <div className="order-info">
                         <div className="img-wrapper">
                           <img src={item.images[0]} alt="" />

@@ -15,6 +15,8 @@ import {
   faGear,
   faUser
 } from "@fortawesome/free-solid-svg-icons";
+import { faArrowRightToBracket } from "@fortawesome/free-solid-svg-icons";
+
 
 const Navbar = () => {
   
@@ -93,12 +95,13 @@ const Navbar = () => {
             </div>
             <span>EN</span>
           </div>
-          <FontAwesomeIcon className="icon" icon={faUser} />
+          {/* <FontAwesomeIcon className="icon" icon={faUser} /> */}
           <i
             onClick={() => navigate("/CartOrder")}
             className="ri-shopping-bag-line"
             style={{ color: "#fff" }}
           ></i>
+          <FontAwesomeIcon icon={faArrowRightToBracket} onClick={()=>navigate('/')} style={{cursor:"pointer"}} />
         </div>
       </nav>
     </section>

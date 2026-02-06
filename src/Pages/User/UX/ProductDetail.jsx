@@ -8,7 +8,7 @@ import { toast } from "react-toastify";
 const ProductDetail = ({ product }) => {
   const { title, images, description, price, quantity, id } = product;
   const { addToCart } = useContext(CardContext);
-  const [activeImg, setActiveImg] = useState("");
+  const [activeImg, setActiveImg] = useState(null);
   const [selectedSize, setSelectedSize] = useState("");
   const [error, setError] = useState("");
   const [showSuccess, setShowSuccess] = useState(false);
@@ -94,7 +94,7 @@ const ProductDetail = ({ product }) => {
             ))}
           </div>
           <div className="main-img">
-            <img src={activeImg}  />
+            <img src={activeImg} alt="" />
           </div>
         </div>
         <div className="right">

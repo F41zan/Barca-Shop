@@ -27,13 +27,11 @@ const Login = () => {
   });
 
   const handleLogin = async (data) => {
-    console.log("BASE_URL+endPoints.users",BASE_URL+endPoints.users)
     const res = await axios.get(BASE_URL+endPoints.users);
     const user = res.data.find(
       (u) => u.email === data.email && u.password === data.password
     );
 
-    console.log("base url",BASE_URL);
     if (user) {
       localStorage.setItem("user", JSON.stringify(user));
       if (user.role === "user") {

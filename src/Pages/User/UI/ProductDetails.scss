@@ -323,6 +323,7 @@
           font-weight: 600;
           letter-spacing: 1px;
           cursor: pointer;
+          transition: background-color 0.3s;
           @media (max-width: 480px) {
             font-size: 15px;
             padding: 12px 0;

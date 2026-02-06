@@ -26,8 +26,6 @@ const CartDetails = () => {
     finalTotalAmt
   } = useContext(CardContext);
   const cartProducts = getCartFullDetails;
-  console.log("cartPrdoucts", cartProducts);
-  console.log("tax", tax);
   const {
     register,
     handleSubmit,
@@ -44,7 +42,6 @@ const CartDetails = () => {
   
   const notify = (code) =>{
     if(!cartProducts.length){
-      console.log("checking");
       toast.error("first add item to cart",{ autoClose: 1500, style: { fontSize: "17px", fontFamily: "outfit" } })
     }
     else{
@@ -122,14 +119,14 @@ const CartDetails = () => {
             </div>
             <div className={cartProducts.length>0?"show-orders":"no-order"}>
               {cartProducts.length>0 ? (
-                cartProducts?.map((item) => (
-                <OrdersCard item={item} key={item.id} />
+                cartProducts?.map((item,idx) => (
+                <OrdersCard item={item} key={idx} />
               ))
               ) : (
                 <div className="empty-cart">
                   <div className="empty-content">
                     <h3 className="desc">Your cart is empty</h3>
-                    <button className="shopping" onClick={()=>{navigate('/Kits')}}>Continue Shopping <i class="ri-arrow-right-line"></i></button>
+                    <button className="shopping" onClick={()=>{navigate('/Kits')}}>Continue Shopping <i className="ri-arrow-right-line"></i></button>
                   </div>
                 </div>
               )

@@ -32,16 +32,12 @@ const Landing = () => {
 
     ScrollTrigger.create({
       trigger: ".slider1",
-      start: "top 90%",
+      start: "top bottom",
       end: "bottom top",
       // markers:true,
       onEnter: () => {
         tl1.play();
         tl2.play();
-      },
-      onLeave: () => {
-        tl1.pause();
-        tl2.pause();
       },
       onEnterBack: () => {
         tl1.play();
@@ -72,60 +68,18 @@ const Landing = () => {
     navigate("/Kits");
   };
 
-
-  const sectionRef = useRef(null);
-  const headerRef = useRef(null);
-  const videoRef = useRef(null);
-
-  const handleMouseMove = (e) => {
-    const section = sectionRef.current;
-    const rect = section.getBoundingClientRect();
-
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-
-    const centerX = rect.width / 2;
-    const centerY = rect.height / 2;
-
-    // Normalized (-1 to 1)
-    let moveX = (x - centerX) / centerX;
-    let moveY = (y - centerY) / centerY;
-
-    //  Clamp values (VERY IMPORTANT)
-    moveX = gsap.utils.clamp(-1, 1, moveX);
-    moveY = gsap.utils.clamp(-1, 1, moveY);
-
-    //  VIDEO  very subtle (far layer)
-    gsap.to(videoRef.current, {
-      x: moveX * 10,
-      y: moveY * 10,
-      duration: 0.6,
-      ease: "power3.out",
-    });
-
-    //  TEXT  slightly stronger (near layer)
-    gsap.to(headerRef.current, {
-      x: moveX * -18,
-      y: moveY * -18,
-      duration: 0.6,
-      ease: "power3.out",
-    });
-  };
-  const section3Ref = useRef(null);
   return (
     <div className="landing">
       <section
-        ref={sectionRef}
         className="video1"
-        onMouseMove={handleMouseMove}
       >
-        <div className="header" ref={headerRef}>
+        <div className="header">
           <h1>FC barcelona</h1>
           <button className="shopBtn" onClick={handleNavigate}>
             Shop Now<i className="ri-arrow-right-line"></i>
           </button>
         </div>
-        <video ref={videoRef} src={barcaVideo} autoPlay loop muted></video>
+        <video  src={barcaVideo} autoPlay loop muted></video>
       </section>
       <section className="section2" >
         <div className="newCollection-container">
@@ -177,7 +131,7 @@ const Landing = () => {
           </div>
         </div>
       </section>
-      <div className="section3" ref={section3Ref}>
+      <div className="section3">
 
         <div className="img-wrapper">
           <img

@@ -34,7 +34,6 @@ const PlaceOrder = () => {
   });
 
   const submitData = (data) => {
-    console.log("shipping info:", data);
     createOrder(data);
     setShowModal(true);
   };
@@ -147,8 +146,8 @@ const PlaceOrder = () => {
                 <div className="header">
                   <h3>Order Summary</h3>
                 </div>
-                {product?.map((item) => (
-                  <div className="order" key={item.id}>
+                {product?.map((item,idx) => (
+                  <div className="order" key={idx}>
                     <div className="order-info">
                       <div className="img-wrapper">
                         <img src={item.images[0]} alt="" />

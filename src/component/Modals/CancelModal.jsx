@@ -4,8 +4,7 @@ import { CardContext } from "../Context/CardContext";
 
 const CancelModal = ({setShowModal,orderId}) => {
   const popUpRef = useRef();
-  console.log("ordereeid::",orderId)
-  const {clearOrders,removeOrder} = useContext(CardContext)
+  const {removeOrder} = useContext(CardContext)
   const closePopUp = (e) =>{
     if(e.target === popUpRef.current){
         setShowModal(false);
@@ -15,7 +14,6 @@ const CancelModal = ({setShowModal,orderId}) => {
     removeOrder(orderId);
     setShowModal(false);
   }
-  console.log("selectedOrderId::",orderId);
   
   return (
     <div className="cancel-modal" ref={popUpRef} onClick={closePopUp}>
