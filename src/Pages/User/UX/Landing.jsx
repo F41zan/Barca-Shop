@@ -141,7 +141,7 @@ const Landing = () => {
         </div>
         <div className="header">
           <h1>FC barcelona X new era</h1>
-          <button className="shopBtn" onClick={() => navigate("/kits")}>
+          <button className="shopBtn" onClick={() => navigate("/Apparel")}>
             Shop Now<i className="ri-arrow-right-line"></i>
           </button>
         </div>
