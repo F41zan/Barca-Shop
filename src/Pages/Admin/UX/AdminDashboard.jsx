@@ -134,7 +134,7 @@ const AdminDashboard = () => {
               </NavLink>
             </div>
             {orders
-              .slice(-5)
+              .slice(-3)
               .reverse()
               .map((order, index) => (
                 <div className="order">
