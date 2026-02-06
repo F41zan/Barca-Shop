@@ -24,8 +24,9 @@ const AdminOrder = () => {
   const { orders, setOrders } = useContext(CardContext);
 
   const itemsInOrder = orders.map((order) => {
-    return order.items.reduce((sum, item) => sum + Number(item.quantity), 0);
+    return order.items.reduce((sum, item) => sum + Number(item.selectedQty), 0);
   });
+  console.log(itemsInOrder);
   const pendingOrder = orders.filter(
     (order) => order.orderStatus.toLowerCase() === "pending",
   );
