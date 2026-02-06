@@ -38,7 +38,7 @@ const AdminSidebar = ({ showMenu, isCollapse, setIsCollapse, setShowMenu }) => {
               <p>Admin Panel</p>
             </div>
             {isMob && (
-              <i class="ri-close-fill" onClick={() => setShowMenu(false)}></i>
+              <i className="ri-close-fill" onClick={() => setShowMenu(false)}></i>
             )}
           </div>
           <hr />
@@ -51,7 +51,7 @@ const AdminSidebar = ({ showMenu, isCollapse, setIsCollapse, setShowMenu }) => {
           <div className={`page ${isActive?"active":""}`}>
             <div className="page-header">
               <div className="icon-wrapper">
-                <i class="ri-bar-chart-line"></i>
+                <i className="ri-bar-chart-line"></i>
               </div>
               <div className="page-name">Dashboard</div>
             </div>
@@ -120,7 +120,7 @@ const AdminSidebar = ({ showMenu, isCollapse, setIsCollapse, setShowMenu }) => {
           className="collapse-btn"
           onClick={() => setIsCollapse(!isCollapse)}
         >
-          <i class="ri-arrow-left-s-line"></i>
+          <i className="ri-arrow-left-s-line"></i>
           <h3>Collapse</h3>
         </button>
         <button

@@ -28,7 +28,7 @@ const AdminNavbar = ({ setShowMenu, showMenu, isCollapse }) => {
       <div className="nav-content">
         <div className="nav-header">
           <div className="menu-btn" onClick={() => setShowMenu(!showMenu)}>
-            <i class="ri-menu-fold-fill"></i>
+            <i className="ri-menu-fold-fill"></i>
           </div>
           <hr />
           <div className="head">
