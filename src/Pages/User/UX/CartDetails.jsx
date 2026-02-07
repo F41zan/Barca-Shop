@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import "../UI/CartDetails.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -16,6 +16,7 @@ import { toast } from "react-toastify";
 
 const CartDetails = () => {
   const navigate = useNavigate();
+  const [isPromoApplied,setIsPromoApplied] = useState(false);
   const {
     getCartFullDetails,
     totalAmt,
@@ -72,7 +73,8 @@ const CartDetails = () => {
       if(finalAmt!==0){
         clearErrors("promocode");
         notify(code);
-        reset()
+        reset();
+        setIsPromoApplied(true);
       }
      else {
       setError("promoCode", {
@@ -180,8 +182,10 @@ const CartDetails = () => {
                       validation={{
                         required: "Please enter a promo code",
                       }}
+                        disabled={isPromoApplied}
+                        placeholder={isPromoApplied?"Promo Code Applied ":'Enter Promo Code'}
                     />
-                    <button className="apply-btn">Apply</button>
+                    <button type="submit" disabled={isPromoApplied} className={`apply-btn ${isPromoApplied ? "disabled-class" :''}`}> {isPromoApplied ? 'Promo Code Applied' : 'Apply Promo Code'}</button>
                   </form>
                 </div>
                 <p>

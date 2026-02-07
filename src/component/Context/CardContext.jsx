@@ -15,7 +15,7 @@ export const CardContext = createContext(null);
 const CardContextProvider = ({ children }) => {
   const [productData, setProductData] = useState([]);
   const [cartItems, setCartItems] = useState([]);
-  const [promoDiscount, setPromoDiscount] = useState(0);
+  const [promoDiscount, setPromoDiscount] = useState(null);
   const [orders, setOrders] = useState([]);
   // console.log("users: ", users);
 
@@ -112,15 +112,13 @@ const CardContextProvider = ({ children }) => {
 
   const ApplyPromoDisc = (code) => {
     if (code !== "BARCA10" && code !== "CULES20") {
-      setPromoDiscount(0);
+      // setPromoDiscount(0);
       return 0;
     }
     const percent = code === "BARCA10" ? 10 : 20;
     const discount = (taxTotalAmt * percent) / 100;
-    // console.log("discoutn::", discount);
     setPromoDiscount(discount);
     const finalTotal = Math.max(taxTotalAmt - discount, 0);
-    // console.log("finaltotal", finalTotal);
     return finalTotal;
   };
 

@@ -11,6 +11,8 @@ const InputField = ({
   validation = {},
   isDimmed,
   options,
+  disabled,
+  placeholder
 }) => {
   return (
     <div className="inputField">
@@ -44,9 +46,10 @@ const InputField = ({
       ) : (
         <input
           className={errors?.[name] ? "error" : "" || isDimmed ? "dim" : ""}
-          placeholder={label}
+          placeholder={placeholder?placeholder:label}
           id={label}
           type={type}
+          disabled={disabled}
           name={name}
           {...(register
             ? register(name, { required: msg, ...validation })

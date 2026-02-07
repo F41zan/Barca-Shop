@@ -120,6 +120,8 @@
           @media (max-width: 786px) {
               flex-direction: column;
               width: 100%;
+              gap: 10px;
+              margin-bottom: 40px;
           }
           button {
             padding: 10px 40px;
