@@ -7,7 +7,7 @@ import { toast } from "react-toastify";
 
 const ProductDetail = ({ product }) => {
   const { title, images, description, price, quantity, id } = product;
-  const { addToCart } = useContext(CardContext);
+  const { addToCart,cartItems } = useContext(CardContext);
   const [activeImg, setActiveImg] = useState(null);
   const [selectedSize, setSelectedSize] = useState("");
   const [error, setError] = useState("");
@@ -19,6 +19,8 @@ const ProductDetail = ({ product }) => {
     setSelectedSize("");
     setShowSuccess("");
   },[id]);
+  const addtoCartItems = cartItems.find((item)=> item.productId===id);
+  const isInCart = Boolean(addtoCartItems);
   const currentProduct = useMemo(() => {
     return productData.find((product) => product.id === id);
   }, [productData, id]);
@@ -146,11 +148,11 @@ const ProductDetail = ({ product }) => {
             </div>
             <button
               onClick={
-                showSuccess ? () => navigate("/cartOrder") : handleAddToCart
+                isInCart ? () => navigate("/cartOrder") : handleAddToCart
               }
-              className={`add-to-cart ${showSuccess ? "go-to-cart" : ""}`}
+              className={`add-to-cart ${isInCart ? "go-to-cart" : ""}`}
             >
-              {showSuccess ? (
+              {isInCart ? (
                 "✓ Go To Cart"
               ) : (
                 <p>

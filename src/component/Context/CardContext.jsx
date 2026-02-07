@@ -17,7 +17,6 @@ const CardContextProvider = ({ children }) => {
   const [cartItems, setCartItems] = useState([]);
   const [promoDiscount, setPromoDiscount] = useState(0);
   const [orders, setOrders] = useState([]);
-  const { users } = useUsers();
   // console.log("users: ", users);
 
   useEffect(() => {
@@ -179,7 +178,7 @@ const CardContextProvider = ({ children }) => {
     setOrders,
     clearOrders,
     removeOrder,
- 
+    cartItems
   };
 
   return (

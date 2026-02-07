@@ -4,7 +4,6 @@
     padding: 50px 0;
   }
   .container {
-    margin: 25px;
     padding: 10px 60px !important;
     @media(max-width:1000px){
         padding: 0 !important;
@@ -81,7 +80,6 @@
         padding: 20px;
         box-shadow: 1px 3px 8px rgba(0, 0, 0, 0.411);
         border-radius: 10px;
-        overflow: hidden;
         max-height: fit-content;
 
         .header{
@@ -164,8 +162,8 @@
               width: 100px;
               height: -webkit-fill-available;
               @media (max-width: 786px) {
-                width: 150px;
-                height: 150px !important;
+                width: 190px;
+                height: 140px !important;
               }
               img {
                 height: 100%;

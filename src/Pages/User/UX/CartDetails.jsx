@@ -56,8 +56,9 @@ const CartDetails = () => {
   const handleNavigate = ()=>{
     if(cartProducts.length>0){
       navigate('/placeOrder')
+    }else{
+      notify(); 
     }
-    notify(); 
   }
   const onSubmitPromo = (data) => {
     if(!cartProducts.length){

@@ -343,7 +343,7 @@ const AdminProducts = () => {
               </div>
 
               <div className="add-new" onClick={() => setShowAddModal(true)}>
-                <button className="new-user">+ New User</button>
+                <button className="new-user">+ New Product</button>
               </div>
             </div>
           </div>

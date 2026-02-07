@@ -145,6 +145,9 @@
       align-items: center;
       justify-content: center;
       gap: 1.4vw;
+      @media(max-width:786px){
+        gap: 2.5vw;
+      }
 
       .user-info{
         position: relative;
@@ -208,6 +211,9 @@
           width: 1rem;
           margin-right: 0.3vw;
           margin-bottom: 2px;
+          @media(max-width:786px){
+            margin-right: 0.7vw;
+          }
           img{
             background-position: center;
             object-fit: cover;

@@ -19,11 +19,15 @@ import SalesByCategory from "../../../component/UX/Admin/Charts/SalesByCategory"
 import MonthlySalesPerformance from "../../../component/UX/Admin/Charts/MonthlySalesPerformance";
 import OrderVsRevenue from "../../../component/UX/Admin/Charts/OrderVsRevenue";
 import useAdminStatsData from "../../../component/UX/Admin/hooks/useAdminStatsData";
+import SkeletonLoader from "../../../component/UX/SkeletonLoader";
 const AdminDashboard = () => {
   const { orders } = useContext(CardContext);
   const { TotalOrderPrice, pendingOrder,deliverOrder, onlyUser,
     activeUser, lowStock, outOfStock, stockCount, } = useAdminStatsData();
-  const { products } = useProducts();
+  const { products,loading } = useProducts();
+
+  {TotalOrderPrice === null ? <SkeletonLoader /> : TotalOrderPrice}
+
 
   return (
     <div className="admin-dashboard">
@@ -47,8 +51,15 @@ const AdminDashboard = () => {
             icon={<FontAwesomeIcon icon={faIndianRupeeSign} />}
             color="#5278D0"
             desc="+229% conversion"
-            dataNo={TotalOrderPrice.toLocaleString("en-IN")}
-          />
+           dataNo={
+    TotalOrderPrice === null ? (
+      <SkeletonLoader height={30} width={120} />
+    ) : (
+      TotalOrderPrice.toLocaleString("en-IN")
+    )
+  }
+/>
+          
           <InfoCard
             title="Total Order"
             bgc="#FDF1F1"

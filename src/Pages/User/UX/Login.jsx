@@ -35,6 +35,10 @@ const Login = () => {
     if (user) {
       localStorage.setItem("user", JSON.stringify(user));
       if (user.role === "user") {
+      //   toast.success("Login Successfully!", {
+      //   autoClose: 1200,
+      //   style: { marginTop: "40px" },
+      // });
         navigate("/Landing", { state: { fromLogin: true } });
       } else {
         navigate("/admin");
