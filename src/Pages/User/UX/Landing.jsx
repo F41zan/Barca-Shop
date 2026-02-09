@@ -49,6 +49,7 @@ const Landing = () => {
       },
     });
   });
+  
   useEffect(() => {
     if (location.state?.fromLogin) {
       // show toast once

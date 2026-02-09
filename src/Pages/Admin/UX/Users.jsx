@@ -23,7 +23,7 @@ import { role,status } from "../../../component/UX/Admin/userConfig/userColumnHe
 
 const Users = () => {
   const { users, setUsers,handleStatus,handleRole,handleDelete,handleEdit,selectedUser,setShowEditModal,showEditModal  } = useUsers();
-  const stats = useUserStats(users);//passing func to arguments and storing all returning objects into one stats object
+  const stats = useUserStats(users);//passing arguments to function and storing all returning objects into one stats object
 
   const [showAddModal, setShowAddModal] = useState(false);
   const [selectedRole, setSelectedRole] = useState("All Role");
@@ -34,7 +34,7 @@ const Users = () => {
     return users.filter((user) => user.id === order.userId);
   });
   const [currentPage, setCurrentPage] = useState(1); // Start at page 1
-  const [itemsPerPage, setItemsPerPage] = useState(5); // Show 5 items per page
+  const [itemsPerPage, setItemsPerPage] = useState(5); // Show 5 items per page 
   const [searchFilter, setSearchFilter] = useState("");
 
   const usersWithOrders = useMemo(() => {
@@ -43,10 +43,6 @@ const Users = () => {
       orders: orders.filter((order) => order.userId === user.id),
     }));
   }, [users, orders]);
-
-  const onlyActiveUser = usersWithOrders.filter(
-    (user) => user.status.toLowerCase() === "active",
-  );
 
   const filteredUser = usersWithOrders.filter((userOrder) => {
     if (
@@ -253,7 +249,7 @@ const Users = () => {
                     </li>
                   ))}
                 </ul>
-              </div>
+              </div> 
 
               <div
                 className="filter-options"

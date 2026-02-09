@@ -5,7 +5,7 @@ import AdminProducts from "../../Pages/Admin/UX/AdminProducts";
 import Users from "../../Pages/Admin/UX/Users";
 
 export const adminRoutes = [
-   { path: "", element: <AdminDashboard /> },           // /adminDashboard
+    { path: "", element: <AdminDashboard /> },           // /adminDashboard
     { path: "users", element: <Users /> }, 
     { path: "adminProducts", element: <AdminProducts /> }, 
     { path: "orders", element: <AdminOrder/> }, 

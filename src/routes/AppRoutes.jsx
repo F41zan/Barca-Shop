@@ -4,9 +4,9 @@ import ProtectedRoutes from "../routes/ProtectedRoutes";
 import Layout from "../component/UX/Layout";
 import "react-toastify/dist/ReactToastify.css";
 import { publicRoutes } from "../routes/Config/PublicRoutes";
-import { userRoutes } from "../routes/Config/UserRoutes";
-import { adminRoutes } from "../routes/Config/AdminRoutes";
-import AdminLayout from "../component/UX/Admin/AdminLayout";
+import { userRoutes } from "../routes/Config/userRoutes";
+import { adminRoutes } from "../routes/Config/adminRoutes";
+import AdminLayout from "../component/UX/Admin/adminLayout";
 
 const AppRoutes = () => {
   return (

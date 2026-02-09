@@ -1,69 +1,81 @@
 import axios from "axios";
 import React, {
-  useContext,
   createContext,
   useEffect,
-  useState,
   useMemo,
+  useState,
 } from "react";
+
 import { BASE_URL } from "../../Api/ApiCore";
 import { endPoints } from "../../Api/Urls";
-import useUsers from "../../CustomHooks/useUser";
 
 export const CardContext = createContext(null);
 
 const CardContextProvider = ({ children }) => {
+  //  STATES 
   const [productData, setProductData] = useState([]);
   const [cartItems, setCartItems] = useState([]);
   const [promoDiscount, setPromoDiscount] = useState(null);
   const [orders, setOrders] = useState([]);
-  // console.log("users: ", users);
 
+  //FETCH PRODUCTS 
   useEffect(() => {
     const fetchProductData = async () => {
       try {
-        // console.log("API URL:", `${BASE_URL}products`);
-        const res = await axios.get(BASE_URL + endPoints.products);
-        const data = res.data;
-        setProductData(data);
-        // console.log("statteproduct", productData);
-        // console.log("res", res.data);
+        const res = await axios.get(
+          BASE_URL + endPoints.products
+        );
+        setProductData(res.data);
       } catch (err) {
-        // console.log(err);
+        console.error(err);
       }
     };
+
     fetchProductData();
   }, []);
 
+  //CART ACTIONS 
   const addToCart = (productId, size) => {
     setCartItems((prev) => {
       const existingIndex = prev.findIndex(
-        (item) => item.productId === productId && item.size === size
+        (item) =>
+          item.productId === productId &&
+          item.size === size
       );
+
       if (existingIndex > -1) {
         const updated = [...prev];
         updated[existingIndex].quantity += 1;
         return updated;
-      } else {
-        return [...prev, { quantity: 1, productId, size }];
       }
+
+      return [
+        ...prev,
+        { productId, size, quantity: 1 },
+      ];
     });
   };
 
   const removeFromCart = (productId, size) => {
     setCartItems((prev) => {
       const existingIndex = prev.findIndex(
-        (item) => item.productId === productId && item.size === size
+        (item) =>
+          item.productId === productId &&
+          item.size === size
       );
+
       if (existingIndex > -1) {
         const updated = [...prev];
+
         if (updated[existingIndex].quantity > 1) {
           updated[existingIndex].quantity -= 1;
         } else {
           updated.splice(existingIndex, 1);
         }
+
         return updated;
       }
+
       return prev;
     });
   };
@@ -71,16 +83,26 @@ const CardContextProvider = ({ children }) => {
   const deleteFromCart = (productId, size) => {
     setCartItems((prev) =>
       prev.filter(
-        (item) => !(item.productId == productId && item.size === size)
+        (item) =>
+          !(
+            item.productId === productId &&
+            item.size === size
+          )
       )
     );
+  };  
+
+  const clearCart = () => {
+    setCartItems([]);
   };
 
+  // DERIVED CART DATA 
   const getCartFullDetails = useMemo(() => {
     return cartItems.map((item) => {
       const product = productData.find(
-        (productItem) => productItem.id === item.productId
+        (p) => p.id === item.productId
       );
+
       return {
         ...product,
         selectedQty: item.quantity,
@@ -90,44 +112,57 @@ const CardContextProvider = ({ children }) => {
   }, [cartItems, productData]);
 
   const productMap = useMemo(() => {
-    return Object.fromEntries(productData.map((p) => [p.id, p]));
+    return Object.fromEntries(
+      productData.map((p) => [p.id, p])
+    );
   }, [productData]);
 
   const totalAmt = useMemo(() => {
     return cartItems.reduce((sum, item) => {
       const product = productMap[item.productId];
-      return sum + (product?.price || 0) * item.quantity;
+      return (
+        sum +
+        (product?.price || 0) * item.quantity
+      );
     }, 0);
   }, [cartItems, productMap]);
 
   const getTotalItems = useMemo(() => {
-    return cartItems.reduce((total, item) => total + item.quantity, 0);
+    return cartItems.reduce(
+      (total, item) => total + item.quantity,
+      0
+    );
   }, [cartItems]);
-  const tax = useMemo(() => (Number(totalAmt) * 18) / 100, [totalAmt]);
-  const taxTotalAmt = useMemo(() => totalAmt + tax, [totalAmt, tax]);
 
-  const clearCart = () => {
-    setCartItems([]);
-  };
+  const tax = useMemo(() => {
+    return (Number(totalAmt) * 18) / 100;
+  }, [totalAmt]);
 
+  const taxTotalAmt = useMemo(() => {
+    return totalAmt + tax;
+  }, [totalAmt, tax]);
+
+  // PROMO CODE 
   const ApplyPromoDisc = (code) => {
     if (code !== "BARCA10" && code !== "CULES20") {
-      // setPromoDiscount(0);
       return 0;
     }
+
     const percent = code === "BARCA10" ? 10 : 20;
     const discount = (taxTotalAmt * percent) / 100;
+
     setPromoDiscount(discount);
-    const finalTotal = Math.max(taxTotalAmt - discount, 0);
-    return finalTotal;
+
+    return Math.max(taxTotalAmt - discount, 0);
   };
 
   const finalTotalAmt = useMemo(() => {
     return Math.max(taxTotalAmt - promoDiscount, 0);
   }, [taxTotalAmt, promoDiscount]);
 
-  const user = JSON.parse(localStorage.getItem("user"));
-  // console.log("userFirstname", user.firstName);
+  //ORDERS 
+  const user = JSON.parse(localStorage.getItem("user") );
+
   const createOrder = (shippingInfo) => {
     const newOrder = {
       orderId: `ORD-${Date.now()}`,
@@ -142,33 +177,38 @@ const CardContextProvider = ({ children }) => {
       },
       paymentMethod: "Cash on Delivery",
       orderStatus: "pending",
-      userName: user.firstName,
-      userId: user.id,
+      userName: user?.firstName,
+      userId: user?.id,
     };
-    setOrders([...orders, newOrder]);
+
+    setOrders((prev) => [...prev, newOrder]);
   };
-
-
 
   const clearOrders = () => {
     setOrders([]);
   };
-  const removeOrder = (id) => {
-    setOrders((prev) => prev.filter((item) => item.orderId !== id));
-  };
-  // // console.log("usersWithOrders", usersWithOrders);
 
+  const removeOrder = (id) => {
+    setOrders((prev) =>
+      prev.filter(
+        (item) => item.orderId !== id
+      )
+    );
+  };
+
+  // CONTEXT VALUE  
   const contextValue = {
     productData,
-    removeFromCart,
+    cartItems,
     addToCart,
-    getCartFullDetails,
+    removeFromCart,
     deleteFromCart,
+    clearCart,
+    getCartFullDetails,
     totalAmt,
     getTotalItems,
     tax,
     taxTotalAmt,
-    clearCart,
     ApplyPromoDisc,
     finalTotalAmt,
     createOrder,
@@ -176,11 +216,12 @@ const CardContextProvider = ({ children }) => {
     setOrders,
     clearOrders,
     removeOrder,
-    cartItems
   };
 
   return (
-    <CardContext.Provider value={contextValue}>{children}</CardContext.Provider>
+    <CardContext.Provider value={contextValue}>
+      {children}
+    </CardContext.Provider>
   );
 };
 

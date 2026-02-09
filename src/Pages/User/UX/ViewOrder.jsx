@@ -13,7 +13,7 @@ const ViewOrder = () => {
   const {  orders,  } = useContext(CardContext);
   const profileInfo = JSON.parse(localStorage.getItem("user"));
   const [showModal, setShowModal] = useState(false);
-  const [showEditModal, setShowEditModal] = useState(false);
+  const [showEdixtModal, setShowEditModal] = useState(false);
   const [selectedOrderId, setSelectedOrderId] = useState(null);
   const user = JSON.parse(localStorage.getItem("user")) || {};
   const userOrder = useMemo(()=>{

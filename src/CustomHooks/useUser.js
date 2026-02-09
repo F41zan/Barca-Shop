@@ -6,11 +6,11 @@ import axios from "axios";
 const useUsers = () => {
   const [users, setUsers] = useState([]);
   const [selectedUser,setSelectedUser] = useState();
-    const [showEditModal, setShowEditModal] = useState(false);
+  const [showEditModal, setShowEditModal] = useState(false);
 
 
   useEffect(() => {
-    const fetchUsers = async () => {
+    const fetchUsers = async () => { 
       try {
         const res = await axios.get(BASE_URL + endPoints.users);
         setUsers(res.data);

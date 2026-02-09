@@ -44,7 +44,7 @@ const EditModal = ({
      await axios.patch(
         `${apiConfig.url}/${data[apiConfig.idKey]}`,
         apiConfig.payload(data)
-      );
+      );  
       console.log("submit:",data)
     } catch (err) {
       console.log(err);

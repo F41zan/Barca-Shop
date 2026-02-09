@@ -4,8 +4,7 @@ import InputField from "../../UX/InputField";
 import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
 import axios from "axios";
-import { BASE_URL } from "../../../Api/ApiCore";
-import { endPoints } from "../../../Api/Urls";
+
 const AddData = ({
   setShowAddModal,
   title = "Edit",

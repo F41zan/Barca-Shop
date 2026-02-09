@@ -185,7 +185,7 @@ const CartDetails = () => {
                         disabled={isPromoApplied}
                         placeholder={isPromoApplied?"Promo Code Applied ":'Enter Promo Code'}
                     />
-                    <button type="submit" disabled={isPromoApplied} className={`apply-btn ${isPromoApplied ? "disabled-class" :''}`}> {isPromoApplied ? 'Promo Code Applied' : 'Apply Promo Code'}</button>
+                    <button type="submit" disabled={isPromoApplied} className={`apply-btn ${isPromoApplied ? "disabled-class" :''}`}> {isPromoApplied ? 'Applied' : 'Apply'}</button>
                   </form>
                 </div>
                 <p>

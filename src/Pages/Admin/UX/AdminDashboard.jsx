@@ -2,7 +2,6 @@ import { useContext } from "react";
 import "../UI/AdminDashboard.scss";
 import { CardContext } from "../../../component/Context/CardContext";
 import useProducts from "../../../CustomHooks/useProducts";
-import useUsers from "../../../CustomHooks/useUser";
 import InfoCard from "../../../component/UX/Admin/InfoCard";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { NavLink } from "react-router-dom";
@@ -24,10 +23,7 @@ const AdminDashboard = () => {
   const { orders } = useContext(CardContext);
   const { TotalOrderPrice, pendingOrder,deliverOrder, onlyUser,
     activeUser, lowStock, outOfStock, stockCount, } = useAdminStatsData();
-  const { products,loading } = useProducts();
-
-  {TotalOrderPrice === null ? <SkeletonLoader /> : TotalOrderPrice}
-
+  const { products} = useProducts();
 
   return (
     <div className="admin-dashboard">

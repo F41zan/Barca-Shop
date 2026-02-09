@@ -7,20 +7,19 @@ import { toast } from "react-toastify";
 
 const ProductDetail = ({ product }) => {
   const { title, images, description, price, quantity, id } = product;
-  const { addToCart,cartItems } = useContext(CardContext);
+  const { addToCart,cartItems,productData } = useContext(CardContext);
   const [activeImg, setActiveImg] = useState(null);
   const [selectedSize, setSelectedSize] = useState("");
   const [error, setError] = useState("");
-  const [showSuccess, setShowSuccess] = useState(false);
   const navigate = useNavigate();
-  const { productData } = useContext(CardContext);
 
   useEffect(()=>{
     setSelectedSize("");
-    setShowSuccess("");
   },[id]);
+
   const addtoCartItems = cartItems.find((item)=> item.productId===id);
   const isInCart = Boolean(addtoCartItems);
+
   const currentProduct = useMemo(() => {
     return productData.find((product) => product.id === id);
   }, [productData, id]);
@@ -75,7 +74,6 @@ const ProductDetail = ({ product }) => {
     addToCart(id, selectedSize);
     setError("");
     notify();
-    setShowSuccess(true);
   };
 
   return (

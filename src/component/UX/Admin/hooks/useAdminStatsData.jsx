@@ -10,15 +10,13 @@ const useAdminStatsData = () => {
     return orders.reduce((sum, item) => sum + item.pricing.totalAmount, 0);
   }, [orders]);
   const pendingOrder = useMemo(() => {
-    return orders.filter((item) => item.orderStatus == "pending");
+    return orders.filter((item) => item.orderStatus.toLowerCase() === "pending");
   }, [orders]);
 
   const { products } = useProducts();
 
   const deliverOrder = useMemo(() => {
-    return orders.filter(
-      (order) => order.orderStatus.toLowerCase() === "delivered",
-    );
+    return orders.filter((order) => order.orderStatus.toLowerCase() === "delivered");
   }, [orders]);
 
   const onlyUser = useMemo(() => {
