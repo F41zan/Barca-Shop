@@ -66,9 +66,7 @@ const CartDetails = () => {
       toast.error("first add item to cart",{ autoClose: 1500, style: { fontSize: "17px", fontFamily: "outfit" } })
       return ;
     }
-    console.log("data", data);
     const code = data.promoCode.toUpperCase();
-    console.log("code:::::",code);
       const finalAmt = ApplyPromoDisc(code); 
       if(finalAmt!==0){
         clearErrors("promocode");
@@ -157,7 +155,7 @@ const CartDetails = () => {
               </div>
 
               <div className="amt-info">
-                <h3 className="about">Shipping (2 items) : </h3>
+                <h3 className="about">Shipping ({cartProducts.length} items) : </h3>
                 <h3 className="free">Free</h3>
               </div>
               <div className="amt-info">
