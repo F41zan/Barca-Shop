@@ -7,18 +7,8 @@ import Landing from "./Pages/User/UX/Landing";
 import AdminDashboard from "./Pages/Admin/UX/AdminDashboard";
 import Layout from "./component/UX/Layout";
 import { ToastContainer } from "react-toastify";
-import Kits from "./Pages/User/UX/ProductCollection";
-import ProductDetail from "./Pages/User/UX/ProductDetail";
-import CartDetails from "./Pages/User/UX/CartDetails";
-import PlaceOrder from "./Pages/User/UX/PlaceOrder";
-import ViewOrder from "./Pages/User/UX/ViewOrder";
-import Products from "./component/UX/Products";
 import "react-toastify/dist/ReactToastify.css";
 import ScrollToTop from "./Helper/ScrollToTop";
-import { publicRoutes } from "./routes/Config/PublicRoutes";
-import { userRoutes } from "./routes/Config/UserRoutes";
-import { adminRoutes } from "./routes/Config/AdminRoutes";
-import AdminLayout from "./component/UX/Admin/AdminLayout";
 import AppRoutes from "./routes/AppRoutes";
 
 const App = () => {

@@ -6,7 +6,7 @@ const InputField = ({
   type,
   msg,
   name,
-  register,
+  register, 
   errors,
   validation = {},
   isDimmed,
@@ -24,7 +24,7 @@ const InputField = ({
             : {})}
           type={type}
           placeholder={label}
-          className={isDimmed ? "dim" : ""}
+          className={isDimmed ? "dim" :     ""}
           name={name}
           id={label}
           onKeyDown={(e) => {

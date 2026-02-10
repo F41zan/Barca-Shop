@@ -6,7 +6,7 @@ import {
   faGear,
   faUser,
 } from "@fortawesome/free-solid-svg-icons";
-import {  NavLink, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const AdminNavbar = ({ setShowMenu, showMenu, isCollapse }) => {
   const [showOpt,setShowOpt] = useState(false);
@@ -23,7 +23,7 @@ const AdminNavbar = ({ setShowMenu, showMenu, isCollapse }) => {
   },[showOpt]);
   return (
     <section
-      className={`admin-navbar  ${isCollapse ? "sidebar-collapse" : ""}`}
+      className="admin-navbar"
     >
       <div className="nav-content">
         <div className="nav-header">

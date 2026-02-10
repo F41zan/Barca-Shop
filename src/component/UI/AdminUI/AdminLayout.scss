@@ -1,12 +1,7 @@
 .admin-layout {
   display: flex;
   position: relative;
-  // overflow-y: hidden;
   height: 100vh;
-
-  @media (max-width: 786px) {
-    // display: block;
-  }
 
   .backdrop {
     position: fixed;
