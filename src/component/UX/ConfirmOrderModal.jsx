@@ -24,8 +24,6 @@ const cartdata = getCartFullDetails;
     clearCart();
   }
 
-  const orderAmt = orders.reduce((sum,order)=>sum+order.pricing.totalAmount,0);
-
   return (
     <div className='overlay' onClick={onClose} ref={popupRef} >
       <div className="modal" >

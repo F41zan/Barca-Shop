@@ -29,8 +29,11 @@ const Login = () => {
   });
 
   const handleLogin = async (data) => {
+    let timer;
     try{
+      timer = setTimeout(() => {
       setLoading(true);
+    }, 2000);
       const res = await axios.get(BASE_URL+endPoints.users);
       const user = res.data.find(
         (u) => u.email === data.email && u.password === data.password
@@ -58,12 +61,13 @@ const Login = () => {
     }catch(err){
       console.log(error);
     } finally{
+      clearTimeout(timer)
       setLoading(false);
     }
   };
   return (
     <main className="user-auth">
-      {loading && <BarcaLoader/>}
+      {loading ? (<BarcaLoader/>):(
       <div className="container">
         <div className="header">
           <img src={logo} alt="" />
@@ -96,6 +100,7 @@ const Login = () => {
           </h4>
         </form>
       </div>
+      )}
     </main>
   );
 };

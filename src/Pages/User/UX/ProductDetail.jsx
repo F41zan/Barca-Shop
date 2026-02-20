@@ -8,6 +8,8 @@ import { toast } from "react-toastify";
 const ProductDetail = ({ product }) => {
   const { title, images, description, price, quantity, id } = product;
   const { addToCart,cartItems,productData } = useContext(CardContext);
+  // localStorage.setItem('cartItems',JSON.stringify(cartItems));
+  // console.log(JSON.parse(localStorage.getItem('cartItems')));
   const [activeImg, setActiveImg] = useState(null);
   const [selectedSize, setSelectedSize] = useState("");
   const [error, setError] = useState("");

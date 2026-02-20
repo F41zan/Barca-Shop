@@ -16,6 +16,8 @@ const ViewOrder = () => {
   const [showEditModal, setShowEditModal] = useState(false);
   const [selectedOrderId, setSelectedOrderId] = useState(null);
   const user = JSON.parse(localStorage.getItem("user")) || {};
+  localStorage.setItem("orders",JSON.stringify(orders)) ;
+  // console.log(localStorage.getItem("orders"));
   const userOrder = useMemo(()=>{
     return orders.filter((order) => order.userId === user.id);
   },[orders]);
