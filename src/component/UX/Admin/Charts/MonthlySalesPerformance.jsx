@@ -1,22 +1,14 @@
-import React, { useContext, useMemo } from "react";
+import  { useContext, useMemo } from "react";
 import ChartCard from "./ChartCard";
-import { ResponsiveContainer } from "recharts";
 
 import {
-  LineChart,
-  Line,
   XAxis,
   YAxis,
   CartesianGrid,
   Tooltip,
   Legend,
-  Cell,
-  Pie,
-  PieChart,
   BarChart,
   Bar,
-  AreaChart,
-  Area,
 } from "recharts";
 import { CardContext } from "../../../Context/CardContext";
 import { RechartsDevtools } from "@recharts/devtools";
@@ -49,6 +41,7 @@ const MonthlySalesPerformance = () => {
         // year: "numeric",
       });
 
+      
       if (last6Months.includes(monthKey)) {
         acc[monthKey] = (acc[monthKey] || 0) + order.pricing.totalAmount;
       }

@@ -1,26 +1,31 @@
 import React, { useContext, useRef } from 'react';
 import '../UI/ConfirmModal.scss';
-import {useNavigate} from 'react-router-dom'
+import {replace, useNavigate} from 'react-router-dom'
 import { CardContext } from '../Context/CardContext';
 
 const ConfirmOrderModal = ({setShowModal}) => {
     const popupRef = useRef();
     const navigate = useNavigate();
+    const {getCartFullDetails,finalTotalAmt,clearCart,orders} = useContext(CardContext);
   const onClose = (e) =>{
     if(e.target==popupRef.current){
-        setShowModal(false);
+        navigate('/viewOrder',{replace:true});
+        clearCart();
     }
   }
-  const {getCartFullDetails,finalTotalAmt,clearCart} = useContext(CardContext);
-  const cartData = getCartFullDetails;
+
+const cartdata = getCartFullDetails;
   const handleView = () =>{
-    navigate('/viewOrder');
+    navigate('/viewOrder',{replace:true});
     clearCart();
   }
   const handleShopping = () =>{
     navigate('/kits')
     clearCart();
   }
+
+  const orderAmt = orders.reduce((sum,order)=>sum+order.pricing.totalAmount,0);
+
   return (
     <div className='overlay' onClick={onClose} ref={popupRef} >
       <div className="modal" >
@@ -43,7 +48,7 @@ const ConfirmOrderModal = ({setShowModal}) => {
                 <div className="features">
                     <i className="ri-shopping-bag-3-line"></i>
                     <div className="desc">
-                        <h3 className="info-head">{cartData.length} Items </h3>
+                        <h3 className="info-head">{cartdata.length} Items </h3>
                         <h3 className="info">In your order</h3>
                     </div>
                 </div>

@@ -8,9 +8,11 @@ import InputField from "../../../component/UX/InputField";
 import { toast } from "react-toastify";
 import { BASE_URL } from "../../../Api/ApiCore";
 import { endPoints } from "../../../Api/Urls";
+import BarcaLoader from "../../../component/UX/BarcaLoader";
 
 const Login = () => {
   const navigate = useNavigate();
+  const [loading,setLoading] = useState(false);
   const [error, setError] = useState({
     password: false,
     email: false,
@@ -27,33 +29,41 @@ const Login = () => {
   });
 
   const handleLogin = async (data) => {
-    const res = await axios.get(BASE_URL+endPoints.users);
-    const user = res.data.find(
-      (u) => u.email === data.email && u.password === data.password
-    );
-
-    if (user) {
-      localStorage.setItem("user", JSON.stringify(user));
-      if (user.role === "user") {
-        navigate("/Landing", { state: { fromLogin: true } });
+    try{
+      setLoading(true);
+      const res = await axios.get(BASE_URL+endPoints.users);
+      const user = res.data.find(
+        (u) => u.email === data.email && u.password === data.password
+      );
+  
+      if (user) {
+        localStorage.setItem("user", JSON.stringify(user));
+        if (user.role === "user") {
+          navigate("/Landing", { state: { fromLogin: true } });
+        } else {
+          navigate("/admin");
+        }
       } else {
-        navigate("/admin");
+        setError((prev) => ({
+          ...prev,
+          email: true,
+          password: true,
+        }));
+        // alert("Invalid Email or Password");
+        toast.error("Invalid Email or Password", {
+          autoClose: 1500,
+          style: { marginTop: "50px" },
+        });
       }
-    } else {
-      setError((prev) => ({
-        ...prev,
-        email: true,
-        password: true,
-      }));
-      // alert("Invalid Email or Password");
-      toast.error("Invalid Email or Password", {
-        autoClose: 1500,
-        style: { marginTop: "50px" },
-      });
+    }catch(err){
+      console.log(error);
+    } finally{
+      setLoading(false);
     }
   };
   return (
     <main className="user-auth">
+      {loading && <BarcaLoader/>}
       <div className="container">
         <div className="header">
           <img src={logo} alt="" />

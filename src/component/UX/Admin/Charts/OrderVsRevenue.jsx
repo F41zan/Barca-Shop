@@ -1,6 +1,5 @@
-import React, { useContext, useMemo } from "react";
+import  { useContext, useMemo } from "react";
 import ChartCard from "./ChartCard";
-import { ResponsiveContainer } from "recharts";
 
 import {
   LineChart,
@@ -10,13 +9,6 @@ import {
   CartesianGrid,
   Tooltip,
   Legend,
-  Cell,
-  Pie,
-  PieChart,
-  BarChart,
-  Bar,
-  AreaChart,
-  Area,
 } from "recharts";
 import { CardContext } from "../../../Context/CardContext";
 import { RechartsDevtools } from "@recharts/devtools";
@@ -29,10 +21,10 @@ const OrderVsRevenue = () => {
     const today = new Date();
     
     for (let i = 5; i >= 0; i--) {
-      const date = new Date(today.getFullYear(), today.getMonth() - i, 1);
+      const date = new Date(today.getFullYear(), today.getMonth() - i, 1);          
       const monthKey = date.toLocaleString("en-US", {
         month: "short",
-        year: "numeric",
+        // year: "numeric",
       });
       months.push(monthKey);
     }
@@ -45,7 +37,7 @@ const OrderVsRevenue = () => {
     return orders.reduce((acc, order) => {
       const month = new Date(order.orderDate).toLocaleString("en-US", {
         month: "short",
-        year: "numeric", // Must include year to match last6Months
+        // year: "numeric", // Must include year to match last6Months
       });
 
       if (!last6Months.includes(month)) return acc;

@@ -184,6 +184,7 @@ const CardContextProvider = ({ children }) => {
     setOrders((prev) => [...prev, newOrder]);
   };
 
+ 
   const clearOrders = () => {
     setOrders([]);
   };
@@ -216,6 +217,7 @@ const CardContextProvider = ({ children }) => {
     setOrders,
     clearOrders,
     removeOrder,
+    
   };
 
   return (

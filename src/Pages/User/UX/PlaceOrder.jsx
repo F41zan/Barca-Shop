@@ -14,6 +14,7 @@ const PlaceOrder = () => {
     finalTotalAmt,
     tax,
     createOrder,
+    clearCart
   } = useContext(CardContext);
   const product = getCartFullDetails;
   const {
@@ -87,10 +88,10 @@ const PlaceOrder = () => {
                       errors={errors}
                     />
                     <InputField
-                      type="text"
+                      type="number"
                       label="Phone Number"
                       register={register}
-                      name="emailAddress"
+                      name="phoneNo"
                       msg="Password is required"
                       errors={errors}
                     />

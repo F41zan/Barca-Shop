@@ -87,7 +87,9 @@ const ViewOrder = () => {
                     <span>{userOrder.length}</span>
                   </button>
                 </div>
-                <button className="logout" onClick={() => navigate("/")}>
+                <button className="logout" onClick={() =>{ navigate("/");
+                  localStorage.removeItem("user")
+                }}>
                   <i className="ri-logout-box-r-line"></i>Logout
                 </button>
               </div>
