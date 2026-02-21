@@ -1,20 +1,12 @@
-import React, { useCallback, useState, useEffect, useRef } from "react";
+import  { useCallback, useState, useEffect, useRef } from "react";
 import "../UI/Navbar.scss";
-import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import barca from "../../assets/img/barca.jpg";
 import barca1 from "../../assets/img/barca1.png";
-import barca2 from "../../assets/img/barca2.png";
 import barca3 from "../../assets/img/barca3.png";
 import barca4 from "../../assets/img/barca4.png";
 import india from "../../assets/img/download (1).png";
-import barca5 from "../../assets/img/barca5.png";
 import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faArrowRightFromBracket,
-  faGear,
-  faUser
-} from "@fortawesome/free-solid-svg-icons";
 import { faArrowRightToBracket } from "@fortawesome/free-solid-svg-icons";
 
 
@@ -101,7 +93,7 @@ const Navbar = () => {
             className="ri-shopping-bag-line"
             style={{ color: "#fff" }}
           ></i>
-          <FontAwesomeIcon icon={faArrowRightToBracket} onClick={()=>navigate('/')} style={{cursor:"pointer"}} />
+          <FontAwesomeIcon icon={faArrowRightToBracket} onClick={()=>{navigate('/');localStorage.removeItem("user")}} style={{cursor:"pointer"}} />
         </div>
       </nav>
     </section>
