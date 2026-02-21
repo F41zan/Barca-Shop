@@ -8,11 +8,11 @@ import CardContextProvider from './component/Context/CardContext.jsx'
 createRoot(document.getElementById('root')).render(
   // <StrictMode>
    <CardContextProvider>
-    {/* <HashRouter> */}
-    <BrowserRouter>
+    <HashRouter>
+    {/* <BrowserRouter> */}
     <App />
-    </BrowserRouter>
-    {/* </HashRouter> */}
+    {/* </BrowserRouter> */}
+    </HashRouter>
      </CardContextProvider > 
   // </StrictMode>,
 )
