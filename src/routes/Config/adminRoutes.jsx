@@ -1,4 +1,3 @@
-import Products from "../../component/UX/Products";
 import AdminDashboard from "../../Pages/Admin/UX/AdminDashboard";
 import AdminOrder from "../../Pages/Admin/UX/AdminOrder";
 import AdminProducts from "../../Pages/Admin/UX/AdminProducts";
