@@ -8,30 +8,6 @@ const App = () => {
     <>
       <ScrollToTop />
       <ToastContainer />
-      {/* <Routes> */}
-        {/* public Route*/}
-        {/* <Route path="/" element={<Layout />}>
-          {publicRoutes.map((route, index) => (
-            <Route key={index} path={route.path} element={route.element} />
-          ))} */}
-
-          {/* Protected Route for user*/}
-          {/* <Route element={<ProtectedRoutes role="user" />}>
-            {userRoutes.map((route, index) => (
-              <Route key={index} path={route.path} element={route.element} />
-            ))}
-          </Route>
-        </Route> */}
-
-        {/* Protected Route for admin*/}
-        {/* <Route element={<ProtectedRoutes role="admin" />}>
-          <Route path="/admin" element={<AdminLayout />}>
-            {adminRoutes.map((route, index) => (
-              <Route key={index} path={route.path} element={route.element} />
-            ))}
-          </Route>
-        </Route> */}
-      {/* </Routes> */}
       <AppRoutes/>
     </>
   );

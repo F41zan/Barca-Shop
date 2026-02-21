@@ -3,7 +3,7 @@ import {  Routes, Route, Navigate } from "react-router-dom";
 import ProtectedRoutes from "../routes/ProtectedRoutes";
 import Layout from "../component/UX/Layout";
 import "react-toastify/dist/ReactToastify.css";
-import { publicRoutes } from "../routes/Config/PublicRoutes";
+import { publicRoutes } from "../routes/Config/publicRoutes";
 import { userRoutes } from "../routes/Config/userRoutes";
 import { adminRoutes } from "../routes/Config/adminRoutes";
 import AdminLayout from "../component/UX/Admin/adminLayout";
