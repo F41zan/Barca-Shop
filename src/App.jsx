@@ -1,11 +1,3 @@
-import React from "react";
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
-import Register from "./Pages/User/UX/Register";
-import Login from "./Pages/User/UX/Login";
-import ProtectedRoutes from "./routes/ProtectedRoutes";
-import Landing from "./Pages/User/UX/Landing";
-import AdminDashboard from "./Pages/Admin/UX/AdminDashboard";
-import Layout from "./component/UX/Layout";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import ScrollToTop from "./Helper/ScrollToTop";
