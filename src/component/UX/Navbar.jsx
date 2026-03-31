@@ -51,7 +51,7 @@ const Navbar = () => {
         <div className="menu-list">
           <ul className={activeMenu ? "show-menu" : "hide-menu"}>
             <NavLink to="/Landing" className="nav-link">
-              <li>
+              <li onClick={handleMenu}>
                 <img src={barca} alt="barca0" />
                 <div>HOME</div>
               </li>
@@ -60,7 +60,7 @@ const Navbar = () => {
               to="/Kits"
               className={({ isActive }) => (isActive ? "active" : "nav-link")}
             >
-              <li>
+              <li onClick={handleMenu}>
                 <img src={barca1} alt="barca1" />
                 <div>KITS</div>
               </li>
@@ -69,12 +69,12 @@ const Navbar = () => {
               to="/Apparel"
               className={({ isActive }) => (isActive ? "active" : "nav-link")}
             >
-              <li>
+              <li onClick={handleMenu}>
                 <img src={barca3} alt="barca3" />
                 <div>APPAREL</div>
               </li>
             </NavLink>
-            <li>
+            <li onClick={handleMenu}>
               <img src={barca4} alt="barca4" />
               <div>PLAYER</div>
             </li>
