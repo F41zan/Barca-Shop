@@ -6,12 +6,14 @@ import { publicRoutes } from "../routes/Config/publicRoutes";
 import { userRoutes } from "../routes/Config/userRoutes";
 import { adminRoutes } from "../routes/Config/adminRoutes";
 import AdminLayout from "../component/UX/Admin/AdminLayout";
+import NotFound from "../component/NotFound";
 
 const AppRoutes = () => {
   return (
     <Routes>
         {/* public Route*/}
         <Route path="/" element={<Layout />}>
+                <Route path="*" element={<NotFound/>} />
           {publicRoutes.map((route, index) => (
             <Route key={index} path={route.path} element={route.element} />
           ))}

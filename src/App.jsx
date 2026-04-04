@@ -7,7 +7,7 @@ const App = () => {
   return (
     <>
       <ScrollToTop />
-      <ToastContainer />
+      <ToastContainer />  
       <AppRoutes/>
     </>
   );
